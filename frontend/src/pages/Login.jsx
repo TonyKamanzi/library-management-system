@@ -76,7 +76,11 @@ export default function Login() {
         </form>
 
         {/* Extra Links */}
-        <p className="text-center text-sm text-gray-600 mt-6">
+        <p className="text-center my-4">
+          <input type="checkbox" name="" id="" />
+          <span className="text-gray-500"> Remember me</span>
+        </p>
+        <p className="text-center text-sm text-gray-600 ">
           Don’t have an account?
           <Link
             to="/signup"
@@ -85,6 +89,7 @@ export default function Login() {
             Sign up
           </Link>
         </p>
+        <p className="text-center"><Link className="text-red-500 text-sm underline">Forgot password?</Link></p>
       </div>
     </div>
   );
