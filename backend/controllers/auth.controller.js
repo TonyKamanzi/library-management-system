@@ -11,7 +11,7 @@ export const signup = async (req, res) => {
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    const user = await User.create({ email, hashedPassword, role });
+    const user = await User.create({ email, password: hashedPassword, role });
     res.status(201).json(user);
   } catch (error) {
     res
@@ -31,15 +31,21 @@ export const login = async (req, res) => {
     const isMatch = await bcrypt.compare(password, user.password);
 
     if (!isMatch) {
-      return res.status(404).json("Invalid Creditials")
+      return res.status(404).json("Invalid Creditials");
     }
 
     req.session.userId = user._id;
-    res.json({message:"Login Succefully"})
-   
+    res.json({ message: "Login Succefully" });
   } catch {
     res
       .status(500)
       .json({ message: "Internal server error", error: error.message });
   }
+};
+
+export const logout = (req, res) => {
+  req.session.destory(() => {
+    res.clearCookie("connects.sid");
+    res.json({ message: "Logged out" });
+  });
 };
