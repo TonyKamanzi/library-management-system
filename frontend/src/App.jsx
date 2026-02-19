@@ -4,8 +4,9 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import About from "./pages/About";
-import Services from "./pages/Services";
 import Contact from "./pages/Contact";
+import Store from "./pages/Store";
+import Community from "./pages/Community";
 
 export default function App() {
   return (
@@ -16,8 +17,9 @@ export default function App() {
           <Route path="/login" element={<Login />}></Route>
           <Route path="/signup" element={<SignUp />}></Route>
           <Route path="/about" element={<About />} />
-          <Route path="/service" element={<Services />} />
+          <Route path="/store" element={<Store />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/community" element={<Community/>} />
         </Routes>
       </BrowserRouter>
     </>

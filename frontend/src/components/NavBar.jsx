@@ -2,10 +2,12 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { FcMenu } from "react-icons/fc";
 
 export default function NavBar() {
   const [userEmail, setUserEmail] = useState("");
   const navigate = useNavigate();
+  const [isOpen, setIsOpen] = useState(false)
 
   useEffect(() => {
     const getUserData = async () => {
@@ -47,47 +49,108 @@ export default function NavBar() {
   };
 
   return (
-    <header className="bg-white shadow-md">
-      <nav className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-        {/* Logo / Brand */}
-        <h1 className="text-2xl font-bold text-blue-600">MyApp</h1>
-
-        {/* Navigation Links */}
-        <div className="flex items-center space-x-8 text-gray-700 font-medium">
-          <Link to="/" className="hover:text-blue-600 transition">
-            Home
-          </Link>
-          <Link to="/about" className="hover:text-blue-600 transition">
-            About
-          </Link>
-          <Link to="/services" className="hover:text-blue-600 transition">
-            Services
-          </Link>
-          <Link to="/contact" className="hover:text-blue-600 transition">
-            Contact
+    <nav className="bg-white shadow-md">
+      <div className="mx-auto max-w-7xl px-4">
+        <div className="flex justify-between items-center h-16">
+          <Link to={"/"} className="text-2xl font-bold italic text-blue-600">
+            City <span className="text-black">Hall</span> Library
           </Link>
 
-          {/* Login / User Info */}
+          <div className="space-x-3 hidden md:flex">
+            <Link
+              className="text-gray-500 hover:text-blue-500 active:text-black"
+              to={"/"}
+            >
+              Home
+            </Link>
+            <Link
+              to={"/store"}
+              className="text-gray-500 hover:text-blue-500 active:text-black"
+            >
+              Store
+            </Link>
+            <Link
+              to={"/community"}
+              className="text-gray-500 hover:text-blue-500 active:text-black"
+            >
+              Community
+            </Link>
+            <Link
+              to={"/about"}
+              className="text-gray-500 hover:text-blue-500 active:text-black"
+            >
+              About
+            </Link>
+            <Link
+              to={"/contact"}
+              className="text-gray-500 hover:text-blue-500 active:text-black"
+            >
+              Contact
+            </Link>
+          </div>
           {userEmail ? (
-            <div className="flex gap-2 items-center">
-              <p className="px-4 font-bold">{userEmail}</p>
+            <div className="flex items-center space-x-2 ml-4">
+              <span className="text-gray-700 hidden md:flex">{userEmail}</span>
               <button
                 onClick={handleLogout}
-                className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition"
+                className="bg-red-500 px-3 py-1 text-white rounded hover:bg-red-600 hidden md:flex"
+              >
+                Logut
+              </button>
+            </div>
+          ) : (
+            <Link
+              to={"/login"}
+              className="text-white bg-blue-500 p-2 rounded-md items-center hover:bg-blue-600  transition hidden md:block"
+            >
+              Login
+            </Link>
+          )}
+          <button
+            className="md:hidden text-2xl"
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            {isOpen ? "✕" : <FcMenu />}
+          </button>
+        </div>
+      </div>
+      {isOpen && (
+        <nav className="md:hidden bg-white px-4 py-4 space-y-3">
+          <Link className="block text-gray-500 " to={"/"}>
+            Home
+          </Link>
+          <Link to={"/store"} className="block text-gray-500 ">
+            Store
+          </Link>
+          <Link to={"/community"} className="block text-gray-500 ">
+            Community
+          </Link>
+          <Link to={"/contact"} className="block text-gray-500 ">
+            Contact
+          </Link>
+          <Link to={"/about"} className="block text-gray-500 ">
+            About
+          </Link>
+          {userEmail ? (
+            <div className="text-center">
+              <span className="text-gray-700 text-center">{userEmail}</span>
+              <button
+                onClick={handleLogout}
+                className="bg-red-600 text-white block w-full rounded p-2 hover:bg-red-600 mt-3"
               >
                 Logout
               </button>
             </div>
           ) : (
             <Link
-              to="/login"
-              className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition"
+              to={"/login"}
+              className="text-white bg-blue-500 p-2 rounded-md  hover:bg-blue-600  transition block text-center"
             >
               Login
             </Link>
           )}
-        </div>
-      </nav>
-    </header>
+        </nav>
+      )}
+    </nav>
   );
 }
