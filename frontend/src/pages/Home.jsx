@@ -3,6 +3,8 @@ import NavBar from "../components/NavBar";
 import Hero from "../components/home/Hero";
 import Statistics from "../components/home/Statistics";
 import CoreFeatures from "../components/home/CoreFeatures";
+import HowItWorks from "../components/home/HowItWorks";
+import CallToAction from "../components/home/CallToAction";
 
 export default function Home() {
   return (
@@ -10,7 +12,9 @@ export default function Home() {
       <NavBar />
       <Hero />
       <Statistics />
-      <CoreFeatures/>
+      <CoreFeatures />
+      <HowItWorks />
+      <CallToAction/>
     </div>
   );
 }
