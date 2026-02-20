@@ -15,7 +15,7 @@ export default function Statistics() {
           </div>
           <div className="bg-gray-100 p-4 rounded shadow-md flex flex-col items-center gap-2 md:w-lg hover:shadow-lg transition duration-300 cursor-pointer">
             <BiBookReader size={40} color="#FF9800" />
-            <p className="text-center text-gray-500">500+ E-books</p>
+            <p className="text-center text-gray-500">500+ Borrowed books</p>
           </div>
           <div className="bg-gray-100 p-4 rounded shadow-md flex flex-col items-center gap-2 md:w-lg hover:shadow-lg transition duration-300 cursor-pointer">
             <FaUsers size={40} color="#2196F3" />
