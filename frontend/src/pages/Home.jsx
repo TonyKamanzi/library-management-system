@@ -5,6 +5,7 @@ import Statistics from "../components/home/Statistics";
 import CoreFeatures from "../components/home/CoreFeatures";
 import HowItWorks from "../components/home/HowItWorks";
 import CallToAction from "../components/home/CallToAction";
+import Footer from "../components/Footer";
 
 export default function Home() {
   return (
@@ -14,7 +15,8 @@ export default function Home() {
       <Statistics />
       <CoreFeatures />
       <HowItWorks />
-      <CallToAction/>
+      <CallToAction />
+      <Footer/>
     </div>
   );
 }
