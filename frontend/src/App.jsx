@@ -1,12 +1,12 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
-import Login from "./pages/Login";
-import SignUp from "./pages/SignUp";
-import About from "./pages/About";
-import Contact from "./pages/Contact";
-import Store from "./pages/Store";
-import Community from "./pages/Community";
+import About from "./pages/user/About";
+import Contact from "./pages/user/Contact";
+import Store from "./pages/user/Store";
+import Community from "./pages/user/Community";
+import Login from "./pages/auth/Login";
+import SignUp from "./pages/auth/SignUp";
 
 export default function App() {
   return (
