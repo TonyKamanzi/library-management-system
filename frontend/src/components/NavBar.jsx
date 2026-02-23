@@ -3,14 +3,17 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { FcMenu } from "react-icons/fc";
+import { useContext } from "react";
+import { AuthContext } from "../AuthContext";
 
 export default function NavBar() {
   const [userEmail, setUserEmail] = useState("");
   const navigate = useNavigate();
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
+  const { user } = useContext(AuthContext);
 
   useEffect(() => {
-    const getUserData = async () => {
+    const getUserData = async (path) => {
       try {
         const res = await axios.get("http://localhost:5000/auth/me", {
           withCredentials: true,
@@ -20,6 +23,11 @@ export default function NavBar() {
           setUserEmail(res.data.user.email);
         } else {
           setUserEmail("");
+        }
+        if (!user) {
+          navigate("/");
+        } else {
+          navigate(path)
         }
       } catch (error) {
         console.log("Error fetching user data:", error);
@@ -63,18 +71,12 @@ export default function NavBar() {
             >
               Home
             </Link>
-            <Link
-              to={"/store"}
-              className="text-gray-500 hover:text-blue-500 active:text-black"
-            >
+           <button onClick={() => navigate("/store")} className="text-gray-500 hover:text-blue-500 active:text-black">
               Store
-            </Link>
-            <Link
-              to={"/community"}
-              className="text-gray-500 hover:text-blue-500 active:text-black"
-            >
+            </button>
+            <button onClick={() => navigate("/community")} className="text-gray-500 hover:text-blue-500 active:text-black">
               Community
-            </Link>
+            </button>
             <Link
               to={"/about"}
               className="text-gray-500 hover:text-blue-500 active:text-black"

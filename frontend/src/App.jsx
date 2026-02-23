@@ -7,19 +7,48 @@ import Store from "./pages/user/Store";
 import Community from "./pages/user/Community";
 import Login from "./pages/auth/Login";
 import SignUp from "./pages/auth/SignUp";
+import ProtectedRoute from "./ProtectedRoute";
+import AdminDashboard from "./pages/admin/AdminDashboard";
 
 export default function App() {
   return (
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Home />}></Route>
-          <Route path="/login" element={<Login />}></Route>
-          <Route path="/signup" element={<SignUp />}></Route>
+          {/* public routes */}
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUp />} />
           <Route path="/about" element={<About />} />
-          <Route path="/store" element={<Store />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/community" element={<Community/>} />
+
+          {/* Protected routes */}
+          <Route
+            path="/store"
+            element={
+              <ProtectedRoute>
+                <Store />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/community"
+            element={
+              <ProtectedRoute>
+                <Community />
+              </ProtectedRoute>
+            }
+          />
+
+          {/* Admin only */}
+          <Route
+            path="/admin-dashboard"
+            element={
+              <ProtectedRoute role="admin">
+                <AdminDashboard />
+              </ProtectedRoute>
+            }
+          />
         </Routes>
       </BrowserRouter>
     </>

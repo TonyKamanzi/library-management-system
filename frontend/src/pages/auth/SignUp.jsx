@@ -23,7 +23,7 @@ export default function SignUp() {
       .post("http://localhost:5000/auth/signup", data)
       .then((res) => {
         console.log("signed up succefullly:", res.data);
-        toast.success("Spare part added successfully!");
+        toast.success("Signup successful!");
         navigate("/login");
       })
       .catch((err) => {

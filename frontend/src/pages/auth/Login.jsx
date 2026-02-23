@@ -3,12 +3,16 @@ import React from "react";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../../AuthContext";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  const { setUser } = useContext(AuthContext);
+
   const handleLogin = async (e) => {
     e.preventDefault();
     setError("");
@@ -16,15 +20,23 @@ export default function Login() {
     const data = { email, password };
 
     try {
-      await axios.post("http://localhost:5000/auth/login", data, {
+      const res = await axios.post("http://localhost:5000/auth/login", data, {
         withCredentials: true,
       });
 
-      navigate("/");
-      toast.success("Login successfully");
+      setUser(res.data.user);
+
+      if (res.data.user.role === "admin") {
+        navigate("/admin-dashboard");
+        toast.success("Welcome Admin!");
+        return;
+      } else {
+        navigate("/");
+        toast.success("Login successful!");
+      }
     } catch (err) {
       setError(err.response?.data?.message || "Login failed. Please try again");
-      toast.error("Signup failed. Please try again.");
+      toast.error("Login failed. Please try again.");
     }
   };
 
@@ -89,7 +101,11 @@ export default function Login() {
             Sign up
           </Link>
         </p>
-        <p className="text-center"><Link className="text-red-500 text-sm underline">Forgot password?</Link></p>
+        <p className="text-center">
+          <Link className="text-red-500 text-sm underline">
+            Forgot password?
+          </Link>
+        </p>
       </div>
     </div>
   );
