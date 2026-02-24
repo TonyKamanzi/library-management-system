@@ -9,6 +9,12 @@ import Login from "./pages/auth/Login";
 import SignUp from "./pages/auth/SignUp";
 import ProtectedRoute from "./ProtectedRoute";
 import AdminDashboard from "./pages/admin/AdminDashboard";
+import Books from "./pages/admin/Books";
+import { Users } from "lucide-react";
+import Messages from "./pages/admin/Messages";
+import Orders from "./pages/admin/Orders";
+import Reports from "./pages/admin/Reports";
+import Settings from "./pages/admin/Settings";
 
 export default function App() {
   return (
@@ -46,6 +52,54 @@ export default function App() {
             element={
               <ProtectedRoute role="admin">
                 <AdminDashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="admin-books"
+            element={
+              <ProtectedRoute role="admin">
+                <Books />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="admin-users"
+            element={
+              <ProtectedRoute role="admin">
+                <Users />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="admin-orders"
+            element={
+              <ProtectedRoute role="admin">
+                <Orders />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="admin-reports"
+            element={
+              <ProtectedRoute role="admin">
+                <Reports />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="admin-messages"
+            element={
+              <ProtectedRoute role="admin">
+                <Messages />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="admin-settings"
+            element={
+              <ProtectedRoute role="admin">
+                <Settings />
               </ProtectedRoute>
             }
           />
