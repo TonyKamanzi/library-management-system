@@ -4,7 +4,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { FcMenu } from "react-icons/fc";
 import { useContext } from "react";
-import { AuthContext } from "../AuthContext";
+import { AuthContext } from "../../AuthContext";
 
 export default function NavBar() {
   const [userEmail, setUserEmail] = useState("");
@@ -61,6 +61,7 @@ export default function NavBar() {
       <div className="mx-auto max-w-7xl px-4">
         <div className="flex justify-between items-center h-16">
           <Link to={"/"} className="text-2xl font-bold italic text-blue-600">
+            <img src="/logo.png" alt="Library Logo" className="w-15 h-10 mr-2 inline-block" />
             City <span className="text-black">Hall</span> Library
           </Link>
 

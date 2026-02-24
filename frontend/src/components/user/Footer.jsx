@@ -5,7 +5,8 @@ export default function Footer() {
   return (
     <footer className="bg-gray-100 shadow-2xl">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 p-8">
-        <Link to={"/"} className="text-2xl font-bold text-blue-500">
+        <Link to={"/"} className="text-2xl font-bold text-blue-500 flex items-center">
+          <img src="/logo.png" alt="City Hall Library logo" className="w-12 h-12 mb-2 object-contain" />
           City <span className="text-gray-500"> Hall</span> Library
         </Link>
         <p className="text-gray-600">

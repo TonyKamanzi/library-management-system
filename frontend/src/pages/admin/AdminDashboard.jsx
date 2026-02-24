@@ -1,7 +1,10 @@
 import React from 'react'
+import Siderbar from '../../components/admin/Siderbar'
 
 export default function AdminDashboard() {
   return (
-    <div>Admin-dashboard</div>
+    <div>
+      <Siderbar/>
+    </div>
   )
 }
