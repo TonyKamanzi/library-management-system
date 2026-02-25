@@ -1,5 +1,6 @@
 import React from "react";
 import Siderbar from "../../components/admin/Siderbar";
+import AdminNavbar from "../../components/admin/AdminNavbar";
 
 export default function AdminDashboard() {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -19,7 +20,7 @@ export default function AdminDashboard() {
           ☰
         </button>
 
-        <h1 className="text-2xl font-bold">Dashboard Content</h1>
+        <AdminNavbar />
       </div>
     </div>
   );
