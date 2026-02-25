@@ -3,17 +3,17 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { FcMenu } from "react-icons/fc";
-import { useContext } from "react";
+// import { useContext } from "react";
 import { AuthContext } from "../../AuthContext";
 
 export default function NavBar() {
   const [userEmail, setUserEmail] = useState("");
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
-  const { user } = useContext(AuthContext);
+  // const { user } = useContext(AuthContext);
 
   useEffect(() => {
-    const getUserData = async (path) => {
+    const getUserData = async (  ) => {
       try {
         const res = await axios.get("http://localhost:5000/auth/me", {
           withCredentials: true,
@@ -24,11 +24,11 @@ export default function NavBar() {
         } else {
           setUserEmail("");
         }
-        if (!user) {
-          navigate("/");
-        } else {
-          navigate(path)
-        }
+        // if (!user) {
+        //   navigate("/");
+        // } else {
+        //   navigate(path)
+        // }
       } catch (error) {
         console.log("Error fetching user data:", error);
         setUserEmail("");

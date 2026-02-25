@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import connectDB from "./config/db.js";
 import cors from "cors";
 import authRoutes from "./routes/auth.route.js";
+import contactRoutes from "./routes/message.route.js"
 import session from "express-session";
 
 dotenv.config();
@@ -30,6 +31,7 @@ app.use(
 );
 
 app.use("/auth", authRoutes);
+app.use("/contact",contactRoutes)
 
 app.listen(process.env.PORT || 5000, () => {
   console.log("Server is running on port now 🥰");
